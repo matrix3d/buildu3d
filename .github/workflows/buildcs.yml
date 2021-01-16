@@ -42,7 +42,7 @@ jobs:
       - uses: actions/checkout@v2
         with:
           repository: 'matrix3d/qianfugame'
-          token: ${{ secrets.GitHub_PAT }}
+          token: ${{ secrets.PAT }}
           ref: main
           lfs: false
       - uses: actions/cache@v1.1.0

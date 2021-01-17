@@ -8,7 +8,7 @@ on:
   push:
     branches: [ main ]
     paths:
-     - 'buildcmd/cs**'
+     - 'cs**'
   workflow_dispatch:
 
 env:
@@ -53,7 +53,14 @@ jobs:
       #- run: |
       # sed -i 's/"com.unity.render-pipelines.lightweight": "10.2.2"/"com.unity.render-pipelines.lightweight": "7.2.1"/g' ${{ matrix.projectPath }}/Packages/manifest.json
        #  cat ${{ matrix.projectPath }}/Packages/manifest.json
-      - uses: webbertakken/unity-builder@v2.0-aplha-5
+      - name: Free Disk Space for Android
+        run: |
+          sudo swapoff -a
+          sudo rm -f /swapfile
+          sudo apt clean
+          docker rmi $(docker image ls -aq)
+          df -h
+      - uses: webbertakken/unity-builder@v2.0-aplha-6
         with:
           projectPath: ${{ matrix.projectPath }}
           unityVersion: ${{ matrix.unityVersion }}
@@ -62,5 +69,5 @@ jobs:
           versioning: ${{ github.run_number }}
       - uses: actions/upload-artifact@v1
         with:
-          name: csgame_${{ matrix.targetPlatform }}
+          name: csgame_${{ matrix.targetPlatform }}_${{ github.run_number }}
           path: build

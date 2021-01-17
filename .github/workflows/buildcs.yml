@@ -60,13 +60,13 @@ jobs:
           sudo apt clean
           docker rmi $(docker image ls -aq)
           df -h
-      - uses: webbertakken/unity-builder@v2.0-aplha-5
+      - uses: game-ci/unity-builder@v2.0-alpha-6
         with:
           projectPath: ${{ matrix.projectPath }}
           unityVersion: ${{ matrix.unityVersion }}
           targetPlatform: ${{ matrix.targetPlatform }}
           allowDirtyBuild: true
-          versioning: ${{ github.run_number }}
+          versioning: None
       - uses: actions/upload-artifact@v1
         with:
           name: csgame_${{ matrix.targetPlatform }}_${{ github.run_number }}

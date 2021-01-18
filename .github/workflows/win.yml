@@ -53,13 +53,6 @@ jobs:
       #- run: |
       # sed -i 's/"com.unity.render-pipelines.lightweight": "10.2.2"/"com.unity.render-pipelines.lightweight": "7.2.1"/g' ${{ matrix.projectPath }}/Packages/manifest.json
        #  cat ${{ matrix.projectPath }}/Packages/manifest.json
-      - name: Free Disk Space for Android
-        run: |
-          sudo swapoff -a
-          sudo rm -f /swapfile
-          sudo apt clean
-          docker rmi $(docker image ls -aq)
-          df -h
       - uses: game-ci/unity-builder@v2.0-alpha-6
         with:
           projectPath: ${{ matrix.projectPath }}

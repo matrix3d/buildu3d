@@ -73,3 +73,4 @@ jobs:
           destination-github-username: 'matrix3d'
           destination-repository-name: 'buildios'
           user-email: sliz@qq.com
+          target-branch: 'main'

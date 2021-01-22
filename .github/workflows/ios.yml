@@ -64,3 +64,12 @@ jobs:
         with:
           name: csgame_${{ matrix.targetPlatform }}_${{ github.run_number }}
           path: build
+      - name: Pushes to another repository
+        uses: cpina/github-action-push-to-another-repository@master
+        env:
+          API_TOKEN_GITHUB: ${{ secrets.PAT }}
+        with:
+          source-directory: 'build'
+          destination-github-username: 'matrix3d'
+          destination-repository-name: 'buildios'
+          user-email: sliz@qq.com

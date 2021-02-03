@@ -8,7 +8,7 @@ on:
   push:
     branches: [ main ]
     paths:
-     - 'cs'
+     - 'csrrrrr'
   workflow_dispatch:
 
 env:

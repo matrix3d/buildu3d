@@ -24,7 +24,7 @@ jobs:
         projectPath:
           - cs
         unityVersion:
-          - 2020.2.1f1
+          - ${{ secrets.UNITY_LICENSE }}
         targetPlatform:
           #- StandaloneOSX # Build a macOS standalone (Intel 64-bit).
           #- StandaloneWindows # Build a Windows standalone.

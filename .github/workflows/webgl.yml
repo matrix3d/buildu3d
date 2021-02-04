@@ -50,7 +50,8 @@ jobs:
           path: ${{ matrix.projectPath }}/Library
           key: Library-${{ matrix.projectPath }}-${{ matrix.targetPlatform }}
       # 因为这个版本的unity不支持高版本urp所以替换掉字符串
-      #- run: |
+      - run: |
+          rmdir -rf ${{ matrix.projectPath }}/Packages/manifest.json
       # sed -i 's/"com.unity.render-pipelines.lightweight": "10.2.2"/"com.unity.render-pipelines.lightweight": "7.2.1"/g' ${{ matrix.projectPath }}/Packages/manifest.json
        #  cat ${{ matrix.projectPath }}/Packages/manifest.json
       - uses: game-ci/unity-builder@v2.0-alpha-6

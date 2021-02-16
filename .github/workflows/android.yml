@@ -60,6 +60,8 @@ jobs:
           sudo apt clean
           docker rmi $(docker image ls -aq)
           df -h
+      - name: Free disk space
+        run: .github/workflows/free_disk_space.sh
       - uses: game-ci/unity-builder@v2.0-alpha-6
         with:
           projectPath: ${{ matrix.projectPath }}
